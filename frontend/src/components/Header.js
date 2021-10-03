@@ -1,9 +1,11 @@
-import Question from "./Question"
+import Question from "./Question";
 
-export default function Header({ questions }) {
-    return (
-        <div className="header">
-            <h2>Question 1 of {questions.length}</h2>
-        </div>
-    )
+export default function Header({ currentQuestion, numQuestions }) {
+  return (
+    <div className="header">
+      <h2>
+        Question {currentQuestion + 1} of {numQuestions}
+      </h2>
+    </div>
+  );
 }
