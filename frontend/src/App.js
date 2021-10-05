@@ -4,12 +4,14 @@ import Card from "./components/Card";
 const tempdata = [
   {
     id: 1,
+    instruction: "Please choose the word that best completes the sentence.",
     question: "English is ___.",
     options: ["great", "good", "so so", "bad"],
     answer: "great",
   },
   {
     id: 2,
+    instruction: "Please choose the word that best completes the sentence.",
     question: "Henry __ a good boy.",
     options: ["are", "be", "been", "is"],
     answer: "is",

@@ -1,5 +1,8 @@
 export default function Question({ question }) {
     return (
-        <p>{question.question}</p>
+        <>
+            <h3>{question.instruction}</h3>
+            <p>{question.question}</p>
+        </>
     )
 }
