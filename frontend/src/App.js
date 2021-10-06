@@ -51,13 +51,13 @@ const tempdata = [
 function App() {
   const [questions, setQuestions] = useState(tempdata);
   const [currentQuestion, setCurrentQuestion] = useState(0);
-  const [userResponses, setUserResponses] =useState([]);
+  const [userResponses, setUserResponses] = useState([]);
 
   const [showResultPage, setShowResultPage] = useState(false);
 
   const handleAnswerButtonClick = (answerOption) => {
     console.log(answerOption);
-    console.log((answerOption.isCorrect))
+    console.log(answerOption.isCorrect);
 
     const nextQuestion = currentQuestion + 1;
     if (nextQuestion < questions.length) {
