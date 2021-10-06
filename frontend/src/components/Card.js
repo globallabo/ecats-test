@@ -21,11 +21,11 @@ export default function Card({
           />
           <Question question={question} />
           <ol>
-            {question.options.map((option) => {
+            {question.answerOptions.map((answerOption) => {
               return (
                 <Option
-                  key={option}
-                  option={option}
+                  key={answerOption.answerText}
+                  answerOption={answerOption}
                   handleAnswerButtonClick={handleAnswerButtonClick}
                 />
               );

@@ -4,27 +4,39 @@ import Card from "./components/Card";
 const tempdata = [
   {
     id: 1,
-    instruction: "Please choose the word that best completes the sentence.",
-    question: "English is ___.",
-    options: ["great", "good", "so so", "bad"],
-    answer: "great",
+    instructionText: "Please choose the word that best completes the sentence.",
+    questionText: "English is ___.",
+    answerOptions: [
+      { answerText: "great", isCorrect: true },
+      { answerText: "good", isCorrect: false },
+      { answerText: "so-so", isCorrect: false },
+      { answerText: "bad", isCorrect: false },
+    ],
   },
   {
     id: 2,
-    instruction: "Please choose the word that best completes the sentence.",
-    question: "Henry __ a good boy.",
-    options: ["are", "be", "been", "is"],
-    answer: "is",
+    instructionText: "Please choose the word that best completes the sentence.",
+    questionText: "Henry __ a good boy.",
+    answerOptions: [
+      { answerText: "are", isCorrect: false },
+      { answerText: "be", isCorrect: false },
+      { answerText: "been", isCorrect: false },
+      { answerText: "is", isCorrect: true },
+    ],
   },
 ];
 
 function App() {
   const [questions, setQuestions] = useState(tempdata);
   const [currentQuestion, setCurrentQuestion] = useState(0);
+  const [userResponses, setUserResponses] =useState([]);
 
   const [showResultPage, setShowResultPage] = useState(false);
 
-  const handleAnswerButtonClick = () => {
+  const handleAnswerButtonClick = (answerOption) => {
+    console.log(answerOption);
+    console.log((answerOption.isCorrect))
+
     const nextQuestion = currentQuestion + 1;
     if (nextQuestion < questions.length) {
       setCurrentQuestion(nextQuestion);
