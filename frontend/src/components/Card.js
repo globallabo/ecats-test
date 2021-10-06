@@ -20,7 +20,7 @@ export default function Card({
             numQuestions={numQuestions}
           />
           <Question question={question} />
-          <ol>
+          <ol type="A">
             {question.answerOptions.map((answerOption) => {
               return (
                 <Option
