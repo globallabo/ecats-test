@@ -67,6 +67,16 @@ export const testSlice = createSlice({
       console.log(action.payload);
       console.log(action.payload.isCorrect);
 
+      state.userResults.push({
+        id: state.questions[state.currentQuestion].id,
+        instructionText: state.questions[state.currentQuestion].instructionText,
+        questionText: state.questions[state.currentQuestion].questionText,
+        correctAnswer: state.questions[
+          state.currentQuestion
+        ].answerOptions.find((item) => item.isCorrect === true).answerText,
+        userAnswer: action.payload.answerText,
+      });
+
       if (action.payload.isCorrect) {
         state.score += 1;
       }
