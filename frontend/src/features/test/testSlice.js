@@ -49,6 +49,7 @@ const questionsList = [
 
 const initialState = {
   questions: questionsList,
+  isStarted: false,
   currentQuestion: 0,
   isFinished: false,
   score: 0,
@@ -59,22 +60,31 @@ export const testSlice = createSlice({
   name: "test",
   initialState,
   reducers: {
-    incrementScore: (state) => {
-      state.score += 1;
+    startTest: (state) => {
+      state.isStarted = true;
     },
-    nextQuestion: (state) => {
-      state.currentQuestion += 1;
-    },
-    finishTest: (state) => {
-      state.isFinished = true;
+    handleAnswerButtonClick: (state, action) => {
+      console.log(action.payload);
+      console.log(action.payload.isCorrect);
+
+      if (action.payload.isCorrect) {
+        state.score += 1;
+      }
+
+      if (state.currentQuestion + 1 < state.questions.length) {
+        state.currentQuestion += 1;
+      } else {
+        state.isFinished = true;
+      }
     },
   },
 });
 
 export const selectQuestions = (state) => state.test.questions;
 export const selectCurrentQuestion = (state) => state.test.currentQuestion;
+export const selectIsStarted = (state) => state.test.isStarted;
 export const selectIsFinished = (state) => state.test.isFinished;
 
-export const { incrementScore, nextQuestion } = testSlice.actions;
+export const { startTest, handleAnswerButtonClick } = testSlice.actions;
 
 export default testSlice.reducer;
