@@ -1,4 +1,5 @@
 import { useSelector } from "react-redux";
+import Stack from "@mui/material/Stack";
 
 import { selectQuestions, selectCurrentQuestion } from "./testSlice";
 
@@ -17,7 +18,7 @@ export default function Test() {
       <div>
         <Header currentQuestion={currentQuestion} numQuestions={numQuestions} />
         <Question question={question} />
-        <ol type="A">
+        <Stack spacing={2}>
           {question.answerOptions.map((answerOption) => {
             return (
               <Option
@@ -26,7 +27,7 @@ export default function Test() {
               />
             );
           })}
-        </ol>
+        </Stack>
       </div>
     </div>
   );

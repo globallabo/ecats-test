@@ -1,4 +1,5 @@
 import { useDispatch } from "react-redux";
+import Button from "@mui/material/Button";
 
 import { startTest } from "./testSlice";
 
@@ -8,7 +9,9 @@ export default function StartPage() {
   return (
     <div>
       <h2>Welcome to the ECATS Diagnostic Test</h2>
-      <button onClick={() => dispatch(startTest())}>Start the test</button>
+      <Button variant="contained" onClick={() => dispatch(startTest())}>
+        Start the Test
+      </Button>
     </div>
   );
 }
