@@ -9,7 +9,7 @@ export default function StartPage() {
   return (
     <div>
       <h2>Welcome to the ECATS Diagnostic Test</h2>
-      <Button variant="contained" onClick={() => dispatch(startTest())}>
+      <Button variant="outlined" onClick={() => dispatch(startTest())}>
         Start the Test
       </Button>
     </div>
