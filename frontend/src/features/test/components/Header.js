@@ -8,10 +8,11 @@ import {
 import Timer from "./Timer";
 
 export default function Header() {
+  const dispatch = useDispatch();
   const questions = useSelector(selectQuestions);
   const numQuestions = questions.length;
   const currentQuestion = useSelector(selectCurrentQuestion);
-  const dispatch = useDispatch();
+  const timerDuration = 10;
   const timeoutAnswer = { answerText: "TIMEOUT", isCorrect: false };
 
   return (
@@ -20,7 +21,7 @@ export default function Header() {
         Question {currentQuestion + 1} of {numQuestions}
       </h2>
       <Timer
-        duration={30}
+        duration={timerDuration}
         onTimeout={() => dispatch(handleAnswerButtonClick(timeoutAnswer))}
         currentQuestion={currentQuestion}
       />
