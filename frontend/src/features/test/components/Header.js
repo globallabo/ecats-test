@@ -22,6 +22,7 @@ export default function Header() {
       <Timer
         duration={30}
         onTimeout={() => dispatch(handleAnswerButtonClick(timeoutAnswer))}
+        currentQuestion={currentQuestion}
       />
     </div>
   );

@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 
-export default function Timer({ duration, onTimeout }) {
+export default function Timer({ duration, onTimeout, currentQuestion }) {
   const [seconds, setSeconds] = useState(duration);
-  //const duration = 10;
+  const reset = () => setSeconds(duration);
 
   function tick() {
     if (seconds === 0) {
@@ -13,13 +13,12 @@ export default function Timer({ duration, onTimeout }) {
     }
   }
 
-  const reset = () => setSeconds(duration);
-
   useEffect(() => {
     const interval = setInterval(() => tick(), 1000);
     return () => clearInterval(interval);
   });
 
-  //let timeLeft = duration - seconds;
+  useEffect(() => reset(), [currentQuestion]);
+
   return <div>Time left: {seconds}</div>;
 }
