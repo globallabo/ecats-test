@@ -10,6 +10,7 @@ import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 
 import { selectUserResults } from "../testSlice";
+import theme from "../../../app/theme";
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -55,7 +56,16 @@ export default function Results() {
               <StyledTableCell>{row.instructionText}</StyledTableCell>
               <StyledTableCell>{row.questionText}</StyledTableCell>
               <StyledTableCell>{row.correctAnswer}</StyledTableCell>
-              <StyledTableCell>{row.userAnswer}</StyledTableCell>
+              <StyledTableCell
+                sx={{
+                  color:
+                    row.userAnswer === row.correctAnswer
+                      ? theme.palette.success.main
+                      : theme.palette.error.main,
+                }}
+              >
+                {row.userAnswer}
+              </StyledTableCell>
             </StyledTableRow>
           ))}
         </TableBody>
