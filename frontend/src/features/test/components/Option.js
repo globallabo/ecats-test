@@ -8,7 +8,7 @@ export default function Option({ answerOption }) {
 
   return (
     <Button
-      variant="contained"
+      variant="outlined"
       onClick={() => dispatch(handleAnswerButtonClick(answerOption))}
     >
       {answerOption.answerText}
