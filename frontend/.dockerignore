@@ -1,0 +1,5 @@
+**/node_modules
+**/npm-debug.log
+build
+# ESLint and Prettier not needed for Docker build at this time
+.eslintrc.json
