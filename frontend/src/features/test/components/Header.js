@@ -12,7 +12,7 @@ export default function Header() {
   const questions = useSelector(selectQuestions);
   const numQuestions = questions.length;
   const currentQuestion = useSelector(selectCurrentQuestion);
-  const timerDuration = 10;
+  const timerDuration = 30;
   const timeoutAnswer = { answerText: "TIMEOUT", isCorrect: false };
 
   return (
