@@ -1,4 +1,6 @@
 import { useSelector, useDispatch } from "react-redux";
+import Box from "@mui/material/Box";
+import Typography from "@mui/material/Typography";
 
 import {
   selectQuestions,
@@ -16,15 +18,15 @@ export default function Header() {
   const timeoutAnswer = { answerText: "TIMEOUT", isCorrect: false };
 
   return (
-    <div className="header">
-      <h2>
+    <Box>
+      <Typography variant="h1">
         Question {currentQuestion + 1} of {numQuestions}
-      </h2>
+      </Typography>
       <Timer
         duration={timerDuration}
         onTimeout={() => dispatch(handleAnswerButtonClick(timeoutAnswer))}
         currentQuestion={currentQuestion}
       />
-    </div>
+    </Box>
   );
 }

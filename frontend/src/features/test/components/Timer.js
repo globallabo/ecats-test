@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import Box from "@mui/material/Box";
 
 export default function Timer({ duration, onTimeout, currentQuestion }) {
   const [seconds, setSeconds] = useState(duration);
@@ -20,5 +21,5 @@ export default function Timer({ duration, onTimeout, currentQuestion }) {
 
   useEffect(() => reset(), [currentQuestion]);
 
-  return <div>Time left: {seconds}</div>;
+  return <Box>Time left: {seconds}</Box>;
 }

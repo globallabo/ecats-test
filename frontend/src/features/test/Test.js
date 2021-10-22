@@ -1,4 +1,5 @@
 import { useSelector } from "react-redux";
+import Container from "@mui/material/Container";
 import Stack from "@mui/material/Stack";
 
 import { selectQuestions, selectCurrentQuestion } from "./testSlice";
@@ -14,21 +15,16 @@ export default function Test() {
   const question = questions[currentQuestion];
 
   return (
-    <div className="test">
-      <div>
-        <Header currentQuestion={currentQuestion} numQuestions={numQuestions} />
-        <Question question={question} />
-        <Stack spacing={2}>
-          {question.answerOptions.map((answerOption) => {
-            return (
-              <Option
-                key={answerOption.answerText}
-                answerOption={answerOption}
-              />
-            );
-          })}
-        </Stack>
-      </div>
-    </div>
+    <Container>
+      <Header currentQuestion={currentQuestion} numQuestions={numQuestions} />
+      <Question question={question} />
+      <Stack spacing={2}>
+        {question.answerOptions.map((answerOption) => {
+          return (
+            <Option key={answerOption.answerText} answerOption={answerOption} />
+          );
+        })}
+      </Stack>
+    </Container>
   );
 }

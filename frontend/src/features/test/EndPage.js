@@ -1,7 +1,8 @@
 import { useState } from "react";
-
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
+import Container from "@mui/material/Container";
+import Typography from "@mui/material/Typography";
 
 import Results from "./components/Results";
 
@@ -9,9 +10,11 @@ export default function EndPage() {
   const [showResults, setShowResults] = useState(false);
   const onClick = () => setShowResults(true);
   return (
-    <div>
+    <Container>
       <Box textAlign="center">
-        <h2>Thanks for taking the ECATS Diagnostic Test</h2>
+        <Typography variant="h1">
+          Thanks for taking the ECATS Diagnostic Test
+        </Typography>
         {showResults ? (
           <>
             <Button variant="outlined" onClick={() => setShowResults(false)}>
@@ -25,6 +28,6 @@ export default function EndPage() {
           </Button>
         )}
       </Box>
-    </div>
+    </Container>
   );
 }

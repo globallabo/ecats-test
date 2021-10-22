@@ -1,8 +1,10 @@
+import Typography from "@mui/material/Typography";
+
 export default function Question({ question }) {
   return (
     <>
-      <h3>{question.instructionText}</h3>
-      <p>{question.questionText}</p>
+      <Typography variant="h2">{question.instructionText}</Typography>
+      <Typography variant="body1">{question.questionText}</Typography>
     </>
   );
 }
