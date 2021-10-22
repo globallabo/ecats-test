@@ -3,7 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const questionsList = [
   {
     id: 1,
-    instructionText: "Choose the correct answer to complete the text.",
+    instructionText: "正しい答えを選んで文を完成させなさい。",
     questionText: "Henry __ a good boy.",
     answerOptions: [
       { answerText: "are", isCorrect: false },
@@ -14,7 +14,7 @@ const questionsList = [
   },
   {
     id: 2,
-    instructionText: "Choose the correct sentence for the text to complete.",
+    instructionText: "正しい語句を選んで文を完成させなさい。",
     questionText: "much",
     answerOptions: [
       { answerText: "I feel ___ better now.", isCorrect: true },
@@ -25,7 +25,7 @@ const questionsList = [
   },
   {
     id: 3,
-    instructionText: "Choose the answer that cannot complete the text.",
+    instructionText: "文を完成するのに<u>適切ではない</u>答えを選びなさい。",
     questionText: "the best",
     answerOptions: [
       { answerText: "It was ___ movie I had ever seen.", isCorrect: false },
@@ -36,7 +36,7 @@ const questionsList = [
   },
   {
     id: 4,
-    instructionText: "Choose the correct position for the text in parentheses.",
+    instructionText: "(　) 内の語句の正しい位置を選びなさい。",
     questionText: "These ① chicken wings ② are ③ spicy to ④ eat. (too)",
     answerOptions: [
       { answerText: "①", isCorrect: false },
