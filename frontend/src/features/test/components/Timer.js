@@ -21,5 +21,5 @@ export default function Timer({ duration, onTimeout, currentQuestion }) {
 
   useEffect(() => reset(), [currentQuestion]);
 
-  return <Box>Time left: {seconds}</Box>;
+  return <Box>残り時間 {seconds}</Box>;
 }
