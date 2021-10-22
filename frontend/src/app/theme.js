@@ -25,8 +25,20 @@ const theme = createTheme({
       margin: "1rem 0",
       textAlign: "left",
     },
+    h3: {
+      fontSize: "1.2rem",
+      fontWeight: "bold",
+      margin: "0",
+      padding: "0",
+      textAlign: "left",
+    },
     body1: {
-      margin: "1rem 0",
+      margin: "1.5rem auto",
+      // width: "36ch",
+      lineHeight: "1.75",
+      minWidth: "30ch",
+      maxnWidth: "40ch",
+      textAlign: "justify",
     },
     button: {
       textTransform: "none",
