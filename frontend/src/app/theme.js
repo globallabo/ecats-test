@@ -32,6 +32,15 @@ const theme = createTheme({
       textTransform: "none",
     },
   },
+  components: {
+    MuiTableContainer: {
+      styleOverrides: {
+        root: {
+          margin: "1rem 0.5rem",
+        },
+      },
+    },
+  },
 });
 
 export default theme;

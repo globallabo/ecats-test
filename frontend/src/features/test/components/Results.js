@@ -7,7 +7,6 @@ import TableCell, { tableCellClasses } from "@mui/material/TableCell";
 import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
-import Paper from "@mui/material/Paper";
 
 import { selectUserResults } from "../testSlice";
 import theme from "../../../app/theme";
@@ -36,8 +35,8 @@ export default function Results() {
   const rows = useSelector(selectUserResults);
 
   return (
-    <TableContainer component={Paper}>
-      <Table sx={{ mt: 2, minWidth: 700 }} aria-label="customized table">
+    <TableContainer>
+      <Table aria-label="customized table">
         <TableHead>
           <TableRow>
             <StyledTableCell align="center">Question ID</StyledTableCell>
