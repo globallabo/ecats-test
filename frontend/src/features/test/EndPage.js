@@ -8,7 +8,7 @@ import Results from "./components/Results";
 
 export default function EndPage() {
   const [showResults, setShowResults] = useState(false);
-  const onClick = () => setShowResults(true);
+
   return (
     <Container>
       <Box textAlign="center">
