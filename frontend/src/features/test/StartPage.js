@@ -11,11 +11,10 @@ export default function StartPage() {
 
   return (
     <Container>
+      <Typography variant="h1">
+        ECATSダイアグノスティックテストへようこそ
+      </Typography>
       <Box textAlign="center">
-        <Typography variant="h1">
-          ECATSダイアグノスティックテストへようこそ
-        </Typography>
-
         <Typography variant="body1">
           ECATS（英語コミュニケーション能力評価試験システム）は英語でのコミュニケーション能力を測定するシステムです。
           <br />

@@ -27,7 +27,7 @@ const theme = createTheme({
     },
     h3: {
       fontSize: "1.2rem",
-      fontWeight: "bold",
+      // fontWeight: "bold",
       margin: "0",
       padding: "0",
       textAlign: "left",
@@ -37,7 +37,7 @@ const theme = createTheme({
       // width: "36ch",
       lineHeight: "1.75",
       minWidth: "30ch",
-      maxnWidth: "40ch",
+      maxWidth: "40ch",
       textAlign: "justify",
     },
     button: {
