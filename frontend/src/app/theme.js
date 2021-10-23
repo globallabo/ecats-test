@@ -20,7 +20,7 @@ const theme = createTheme({
       textAlign: "center",
     },
     h2: {
-      fontSize: "1.5rem",
+      fontSize: "1.25rem",
       fontWeight: "bold",
       margin: "1rem 0",
       textAlign: "left",

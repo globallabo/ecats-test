@@ -21,5 +21,16 @@ export default function Timer({ duration, onTimeout, currentQuestion }) {
 
   useEffect(() => reset(), [currentQuestion]);
 
-  return <Box>残り時間 {seconds}</Box>;
+  return (
+    <Box
+      sx={{
+        marginTop: "2rem",
+        width: "100%",
+        textAlign: "right",
+        color: "red",
+      }}
+    >
+      残り時間 {seconds}
+    </Box>
+  );
 }

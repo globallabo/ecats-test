@@ -12,7 +12,9 @@ export default function StartPage() {
   return (
     <Container>
       <Typography variant="h1">
-        ECATSダイアグノスティックテストへようこそ
+        ECATSダイアグノスティックテスト
+        <br />
+        へようこそ
       </Typography>
       <Box textAlign="center">
         <Typography variant="body1">
@@ -25,8 +27,10 @@ export default function StartPage() {
           このダイアグノスティックテストでは、主に正確性や語彙力を測定します。
         </Typography>
 
-        <Typography variant="h3">問題タイプは4種類あります。</Typography>
-        <Typography variant="body1" mt="0" pl="1rem">
+        <Typography variant="body1" mb="0">
+          問題タイプは4種類あります。
+        </Typography>
+        <Typography variant="body1" mt="0" pl="1rem" lineHeight="2.5">
           Type 1: 正しい答えを選んで文を完成させなさい。
           <br />
           Type 2: 正しい語句を選んで文を完成させなさい。
