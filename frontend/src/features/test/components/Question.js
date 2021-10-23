@@ -9,13 +9,13 @@ export default function Question({ question }) {
 
   // Modify positional question with some extra spacing
   function addPositionQuestionSpacing(text) {
-    let regex1 = "/([①②③④])/g";
-    let replacement1 = "&nbsp;&nbsp;--$&--&nbsp;&nbsp;";
+    let regex1 = /([①②③④])/g;
+    let replacement1 = "&nbsp;&nbsp;$&&nbsp;&nbsp;";
 
     let newText1 = text.replace(regex1, replacement1);
 
-    let regex2 = "/([(])/g";
-    let replacement2 = "<br />--(";
+    let regex2 = /([(])/g;
+    let replacement2 = "<br />(";
 
     let newText2 = newText1.replace(regex2, replacement2);
     return newText2;
