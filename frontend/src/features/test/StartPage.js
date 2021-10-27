@@ -16,7 +16,7 @@ export default function StartPage() {
         <br />
         へようこそ
       </Typography>
-      <Box textAlign="center">
+      <Box textAlign="center" mx="auto" maxWidth="40ch">
         <Typography variant="body1">
           ECATS（英語コミュニケーション能力評価試験システム）は英語でのコミュニケーション能力を測定するシステムです。
           <br />
