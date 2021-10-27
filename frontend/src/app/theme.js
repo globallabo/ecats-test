@@ -36,8 +36,8 @@ const theme = createTheme({
       margin: "1.5rem auto",
       // width: "36ch",
       lineHeight: "1.75",
-      minWidth: "30ch",
-      maxWidth: "40ch",
+      // minWidth: "30ch",
+      // maxWidth: "40ch",
       textAlign: "justify",
     },
     button: {
