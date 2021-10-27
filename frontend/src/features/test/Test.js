@@ -34,12 +34,6 @@ export default function Test() {
         duration={timerDuration}
         onTimeout={() => dispatch(handleAnswerButtonClick(timeoutAnswer))}
         currentQuestion={currentQuestion}
-        sx={{
-          marginTop: "2rem",
-          width: "100%",
-          textAlign: "right",
-          color: "red",
-        }}
       />
     </Container>
   );
