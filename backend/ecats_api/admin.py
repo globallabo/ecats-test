@@ -8,7 +8,6 @@ from . import models as mymodels
 class AnswerInlineModel(admin.TabularInline):
     model = mymodels.Answer
     extra = 4
-    # fields =("answer_text", "is_correct")
     formfield_overrides = {
         models.TextField: {"widget": forms.widgets.TextInput(attrs={'size': 50})}
     }
