@@ -1,34 +1,35 @@
 from django.contrib import admin
 from django import forms
-from django.db import models
+from django.db.models import TextField
 
-from . import models as mymodels
+from ecats_api import models
 
 
 class AnswerInlineModel(admin.TabularInline):
-    model = mymodels.Answer
+    model = models.Answer
     extra = 4
     formfield_overrides = {
-        models.TextField: {"widget": forms.widgets.TextInput(attrs={'size': 50})}
+        TextField: {"widget": forms.widgets.TextInput(attrs={'size': 50})}
     }
 
 
-@admin.register(mymodels.Question)
+@admin.register(models.Question)
 class QuestionAdmin(admin.ModelAdmin):
     list_display = ("target", "question_type", "question_text")
     inlines = [AnswerInlineModel]
-    formfield_overrides = {
-        models.TextField: {"widget": forms.widgets.TextInput(attrs={'size': 50})}
-    }
+    # Use the below to get a single-line TextInput instead of a textarea
+    # formfield_overrides = {
+    #     TextField: {"widget": forms.widgets.TextInput(attrs={'size': 50})}
+    # }
 
-@admin.register(mymodels.QuestionType)
+@admin.register(models.QuestionType)
 class QuestionAdmin(admin.ModelAdmin):
     list_display = ("name", "instruction_text_en")
 
-@admin.register(mymodels.Target)
+@admin.register(models.Target)
 class QuestionAdmin(admin.ModelAdmin):
     list_display = ("level", "category", "subcategory", "can_do_statement_en")
 
-admin.site.register(mymodels.Level)
-admin.site.register(mymodels.Category)
-admin.site.register(mymodels.Subcategory)
+admin.site.register(models.Level)
+admin.site.register(models.Category)
+admin.site.register(models.Subcategory)
