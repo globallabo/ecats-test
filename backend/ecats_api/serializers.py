@@ -1,5 +1,11 @@
-from rest_framework import serializers
-from ecats_api.models import Question, Answer, QuestionType
+from rest_framework import fields, serializers
+from ecats_api.models import Question, Answer, QuestionType, Target
+
+class TargetSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Target
+        fields = ["id", "level", "category", "subcategory", "can_do_statement_en", "can_do_statement_ja"]
 
 
 class QuestionTypeSerializer(serializers.ModelSerializer):
@@ -22,3 +28,14 @@ class QuestionSerializer(serializers.ModelSerializer):
     class Meta:
         model = Question
         fields = ["id", "question_type", "question_text", "answer_set"]
+
+
+class RandomQuestionSerializer(serializers.ModelSerializer):
+
+    target = TargetSerializer(read_only=True)
+    question_type = QuestionTypeSerializer(read_only=True)
+    answer_set = AnswerSerializer(many=True, read_only=True)
+
+    class Meta:
+        model=Question
+        fields = ["id", "target", "question_type", "question_text", "answer_set"]
