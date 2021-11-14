@@ -13,6 +13,7 @@ distro==1.4.0
 dj-rest-auth==2.1.11
 Django==3.2.8
 django-allauth==0.45.0
+django-cors-headers==3.10.0
 djangorestframework==3.12.4
 html5lib==1.0.1
 idna==2.8
@@ -35,5 +36,6 @@ requests-oauthlib==1.3.0
 retrying==1.3.3
 six==1.14.0
 sqlparse==0.4.2
+toml==0.10.2
 urllib3==1.25.8
 webencodings==0.5.1
