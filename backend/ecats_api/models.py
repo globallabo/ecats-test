@@ -53,8 +53,12 @@ class Target(TimeStampedModel):
 
 class QuestionType(TimeStampedModel):
     name = models.CharField(max_length=255)
-    instruction_text_en = models.TextField(verbose_name="Question type instructions in English")
-    instruction_text_ja = models.TextField(verbose_name="Question type instructions in Japanese")
+    instruction_text_en = models.TextField(
+        verbose_name="Question type instructions in English"
+    )
+    instruction_text_ja = models.TextField(
+        verbose_name="Question type instructions in Japanese"
+    )
 
     def __str__(self) -> str:
         return self.name
@@ -78,7 +82,9 @@ class Question(TimeStampedModel):
 
 
 class Answer(TimeStampedModel):
-    question = models.ForeignKey(Question, on_delete=models.CASCADE, related_name="answers")
+    question = models.ForeignKey(
+        Question, on_delete=models.CASCADE, related_name="answer_options"
+    )
     answer_text = models.TextField(default="")
     is_correct = models.BooleanField(default=False)
 
