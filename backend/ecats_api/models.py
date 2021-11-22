@@ -78,7 +78,7 @@ class Question(TimeStampedModel):
 
 
 class Answer(TimeStampedModel):
-    question = models.ForeignKey(Question, on_delete=models.CASCADE)
+    question = models.ForeignKey(Question, on_delete=models.CASCADE, related_name="answers")
     answer_text = models.TextField(default="")
     is_correct = models.BooleanField(default=False)
 
