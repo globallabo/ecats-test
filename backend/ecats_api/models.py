@@ -52,7 +52,7 @@ class Target(TimeStampedModel):
 
 
 class QuestionType(TimeStampedModel):
-    name = models.CharField(max_length=10)
+    name = models.CharField(max_length=255)
     instruction_text_en = models.TextField(verbose_name="Question type instructions in English")
     instruction_text_ja = models.TextField(verbose_name="Question type instructions in Japanese")
 
