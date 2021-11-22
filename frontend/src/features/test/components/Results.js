@@ -1,4 +1,5 @@
 import { useSelector } from "react-redux";
+import dompurify from "dompurify";
 
 import { styled } from "@mui/material/styles";
 import Table from "@mui/material/Table";
@@ -33,6 +34,9 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 
 export default function Results() {
   const rows = useSelector(selectUserResults);
+  // Sanitize instruction text that might have simple HTML (underline, etc.)
+  // This should be refactored out when using the API to get data
+  const sanitizer = dompurify.sanitize;
 
   return (
     <TableContainer>
@@ -52,7 +56,13 @@ export default function Results() {
               <StyledTableCell component="th" scope="row">
                 {row.id}
               </StyledTableCell>
-              <StyledTableCell>{row.instructionText}</StyledTableCell>
+              <StyledTableCell>
+                <span
+                  dangerouslySetInnerHTML={{
+                    __html: sanitizer(row.instructionText),
+                  }}
+                />
+              </StyledTableCell>
               <StyledTableCell>{row.questionText}</StyledTableCell>
               <StyledTableCell>{row.correctAnswer}</StyledTableCell>
               <StyledTableCell

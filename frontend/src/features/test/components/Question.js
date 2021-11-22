@@ -29,7 +29,7 @@ export default function Question({ question }) {
         問 {currentQuestion + 1}:&nbsp;
         <span
           dangerouslySetInnerHTML={{
-            __html: sanitizer(question.instructionText),
+            __html: sanitizer(question.questionType.instructionTextJa),
           }}
         />
       </Typography>
