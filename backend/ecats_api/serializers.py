@@ -22,12 +22,13 @@ class AnswerSerializer(serializers.ModelSerializer):
 
 class QuestionSerializer(serializers.ModelSerializer):
 
+    target = TargetSerializer(read_only=True)
     question_type = QuestionTypeSerializer(read_only=True)
     answer_set = AnswerSerializer(many=True, read_only=True)
 
     class Meta:
         model = Question
-        fields = ["id", "question_type", "question_text", "answer_set"]
+        fields = ["id", "target", "question_type", "question_text", "answer_set"]
 
 
 class RandomQuestionSerializer(serializers.ModelSerializer):
