@@ -2,6 +2,9 @@ from rest_framework import fields, serializers
 from ecats_api.models import Question, Answer, QuestionType, Target
 
 class TargetSerializer(serializers.ModelSerializer):
+    level = serializers.StringRelatedField()
+    category = serializers.StringRelatedField()
+    subcategory = serializers.StringRelatedField()
 
     class Meta:
         model = Target
