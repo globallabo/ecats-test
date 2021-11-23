@@ -44,6 +44,7 @@ export default function Results() {
         <TableHead>
           <TableRow>
             <StyledTableCell align="center">Question ID</StyledTableCell>
+            <StyledTableCell align="center">Can-Do Statement</StyledTableCell>
             <StyledTableCell align="center">Instructions</StyledTableCell>
             <StyledTableCell align="center">Question</StyledTableCell>
             <StyledTableCell align="center">Correct Answer</StyledTableCell>
@@ -56,6 +57,7 @@ export default function Results() {
               <StyledTableCell component="th" scope="row">
                 {row.id}
               </StyledTableCell>
+              <StyledTableCell>{row.canDoStatement}</StyledTableCell>
               <StyledTableCell>
                 <span
                   dangerouslySetInnerHTML={{

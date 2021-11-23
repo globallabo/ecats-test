@@ -196,6 +196,8 @@ export const testSlice = createSlice({
 
       state.userResults.push({
         id: state.questions[state.currentQuestion].id,
+        canDoStatement:
+          state.questions[state.currentQuestion].target.canDoStatementJa,
         instructionText:
           state.questions[state.currentQuestion].questionType.instructionTextJa,
         questionText: state.questions[state.currentQuestion].questionText,
