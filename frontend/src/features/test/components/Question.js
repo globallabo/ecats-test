@@ -53,7 +53,14 @@ export default function Question({ question }) {
             <Button
               key={answerOption.id}
               variant="outlined"
-              onClick={() => dispatch(handleAnswerButtonClick(answerOption))}
+              onClick={() =>
+                dispatch(
+                  handleAnswerButtonClick({
+                    ...question,
+                    userAnswer: answerOption,
+                  })
+                )
+              }
             >
               {answerOption.answerText}
             </Button>

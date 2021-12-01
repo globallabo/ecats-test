@@ -192,7 +192,7 @@ export const testSlice = createSlice({
     },
     handleAnswerButtonClick: (state, action) => {
       console.log(action.payload);
-      console.log(action.payload.isCorrect);
+      console.log(action.payload.userAnswer.isCorrect);
 
       state.userResults.push({
         id: state.questions[state.currentQuestion].id,
@@ -204,10 +204,10 @@ export const testSlice = createSlice({
         correctAnswer: state.questions[
           state.currentQuestion
         ].answerOptions.find((item) => item.isCorrect === true).answerText,
-        userAnswer: action.payload.answerText,
+        userAnswer: action.payload.userAnswer.answerText,
       });
 
-      if (action.payload.isCorrect) {
+      if (action.payload.userAnswer.isCorrect) {
         state.score += 1;
       }
 
