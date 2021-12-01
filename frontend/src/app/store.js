@@ -1,7 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { setupListeners } from "@reduxjs/toolkit/query";
 
-import { questionsApi } from "../services/questions";
+import { questionsApi } from "./services/questions";
 import testReducer from "../features/test/testSlice";
 
 export const store = configureStore({
