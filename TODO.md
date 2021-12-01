@@ -6,6 +6,12 @@ Project Description
 
 ### Todo
 
+- [ ] Create test instances in DB  
+- [ ] Create test-taker auth (email and code)  
+- [ ] Send results to server API  
+- [ ] Write results to report output  
+- [ ] Add docker container for DRF app  
+  - [ ] Deployment? gunicorn?  
 
 ### In Progress
 
