@@ -1,8 +1,10 @@
 import { useSelector } from "react-redux";
 import Typography from "@mui/material/Typography";
+import Stack from "@mui/material/Stack";
 import dompurify from "dompurify";
 
 import { selectCurrentQuestion } from "../testSlice";
+import Option from "./Option";
 
 export default function Question({ question }) {
   const currentQuestion = useSelector(selectCurrentQuestion);
@@ -42,6 +44,13 @@ export default function Question({ question }) {
           }}
         />
       </Typography>
+      <Stack spacing={2}>
+        {question.answerOptions.map((answerOption) => {
+          return (
+            <Option key={answerOption.answerText} answerOption={answerOption} />
+          );
+        })}
+      </Stack>
     </>
   );
 }

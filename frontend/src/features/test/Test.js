@@ -1,11 +1,9 @@
 import { useSelector, useDispatch } from "react-redux";
 import Container from "@mui/material/Container";
-import Stack from "@mui/material/Stack";
 
 import { useGetAllQuestionsQuery } from "../../app/services/questions";
 import { selectCurrentQuestion, handleAnswerButtonClick } from "./testSlice";
 
-import Option from "./components/Option";
 import Question from "./components/Question";
 import Timer from "./components/Timer";
 
@@ -29,13 +27,6 @@ export default function Test() {
   return (
     <Container>
       <Question question={question} />
-      <Stack spacing={2}>
-        {question.answerOptions.map((answerOption) => {
-          return (
-            <Option key={answerOption.answerText} answerOption={answerOption} />
-          );
-        })}
-      </Stack>
       <Timer
         duration={timerDuration}
         onTimeout={() => dispatch(handleAnswerButtonClick(timeoutAnswer))}
