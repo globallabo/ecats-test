@@ -90,3 +90,34 @@ class Answer(TimeStampedModel):
 
     def __str__(self) -> str:
         return self.answer_text
+
+
+class TestTaker(TimeStampedModel):
+    email = models.EmailField()
+    code = models.CharField(max_length=255)
+    active = models.BooleanField(default=True)
+
+    def __str__(self) -> str:
+        return self.email
+
+
+class TestInstance(TimeStampedModel):
+    test_taker = models.ForeignKey(
+        TestTaker, on_delete=models.RESTRICT, related_name="test_instances"
+    )
+    datetime_taken = models.DateTimeField()
+
+
+class QuestionAnswered(TimeStampedModel):
+    test_instance = models.ForeignKey(
+        TestInstance, on_delete=models.CASCADE, related_name="questions_answered"
+    )
+    question = models.ForeignKey(
+        Question, on_delete=models.RESTRICT, related_name="questions_answered"
+    )
+    answer_given = models.ForeignKey(
+        Answer, on_delete=models.RESTRICT, related_name="questions_answered"
+    )
+
+    class Meta:
+        verbose_name_plural = "questions_answered"
