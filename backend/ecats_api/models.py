@@ -93,7 +93,7 @@ class Answer(TimeStampedModel):
 
 
 class TestTaker(TimeStampedModel):
-    email = models.EmailField()
+    email = models.EmailField(unique=True)
     code = models.CharField(max_length=255)
     active = models.BooleanField(default=True)
 
