@@ -1,4 +1,6 @@
 from django.db import models
+import string
+import random
 
 
 class TimeStampedModel(models.Model):
@@ -92,9 +94,15 @@ class Answer(TimeStampedModel):
         return self.answer_text
 
 
+def random_code() -> str:
+    length = 6
+    code = "".join(random.choices(string.digits, k=length))
+    return code
+
+
 class TestTaker(TimeStampedModel):
     email = models.EmailField(unique=True)
-    code = models.CharField(max_length=255)
+    code = models.CharField(max_length=255, default=random_code)
     active = models.BooleanField(default=True)
 
     def __str__(self) -> str:
