@@ -1,4 +1,4 @@
-from rest_framework import fields, serializers
+from rest_framework import serializers
 from ecats_api.models import TestTaker, Question, Answer, QuestionType, Target
 
 
