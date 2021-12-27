@@ -1,5 +1,11 @@
 from rest_framework import fields, serializers
-from ecats_api.models import Question, Answer, QuestionType, Target
+from ecats_api.models import TestTaker, Question, Answer, QuestionType, Target
+
+
+class TestTakerSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = TestTaker
+        fields = ["id", "email", "code", "active"]
 
 
 class TargetSerializer(serializers.ModelSerializer):
