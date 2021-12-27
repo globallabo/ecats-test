@@ -1,9 +1,11 @@
-from django.urls import path
-from ecats_api.views import AllQuestions, RandomQuestion
+# from django.urls import path
+from rest_framework.routers import DefaultRouter
+from ecats_api.views import QuestionViewSet, TestTakerViewSet
 
-app_name="ecats_api"
+app_name = "ecats_api"
 
-urlpatterns = [
-    path("", AllQuestions.as_view(), name="ecats_api"),
-    path("r/<str:level>/", RandomQuestion.as_view(), name="random"),
-]
+router = DefaultRouter()
+router.register(r"questions", QuestionViewSet, basename="ecats_api")
+router.register(r"test_takers", TestTakerViewSet, basename="test_takers")
+
+urlpatterns = router.urls
