@@ -7,7 +7,6 @@ Project Description
 ### Todo
 
 - [ ] Create test-taker auth (email and code)  
-- [ ] Send email and code to server and validate  
 - [ ] Send results to server API  
 - [ ] Use permission classes to restrict access to put/post/etc.  
 - [ ] Write results to report output  
@@ -16,11 +15,13 @@ Project Description
 
 ### In Progress
 
-- [ ] Get test-taker by email, not ID  
-- [ ] Use viewsets to access API  
+- [ ] Send email and code to server and validate  
 
 ### Done ✓
 
+- [x] Create test taker code as a default value  
+- [x] Use viewsets to access API  
+- [x] Get test-taker by email, not ID  
 - [x] Create test instances in DB  
 - [x] Refactor random view and limits into the main question viewset  
 - [x] Work out how to handle button click when the array of questions is in separate state from the "currentQuestion" number variable (passed the full question object along with the user answer to the button click handler reducer).  
