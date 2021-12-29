@@ -1,13 +1,13 @@
 import { useSelector, useDispatch } from "react-redux";
 import Container from "@mui/material/Container";
 
-import { useGetAllQuestionsQuery } from "../../app/services/questions";
-import { selectCurrentQuestion, handleAnswerButtonClick } from "./testSlice";
+import { useGetAllQuestionsQuery } from "../../../app/services/questions";
+import { selectCurrentQuestion, handleAnswerButtonClick } from "../testSlice";
 
-import Question from "./components/Question";
-import Timer from "./components/Timer";
+import Question from "../components/Question";
+import Timer from "../components/Timer";
 
-export default function Test() {
+export default function TestPage() {
   const dispatch = useDispatch();
   const {
     data: questions = [],

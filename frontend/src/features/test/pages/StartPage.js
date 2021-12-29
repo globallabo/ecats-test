@@ -4,7 +4,7 @@ import Button from "@mui/material/Button";
 import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
 
-import { startTest } from "./testSlice";
+import { startTest } from "../testSlice";
 
 export default function StartPage() {
   const dispatch = useDispatch();
