@@ -16,6 +16,7 @@ Project Description
 ### In Progress
 
 - [ ] Send email and code to server and validate  
+- [ ] Use React Router for various pages  
 
 ### Done ✓
 
