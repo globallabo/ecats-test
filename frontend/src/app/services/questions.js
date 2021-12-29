@@ -8,7 +8,7 @@ export const questionsApi = createApi({
       query: (level) => `r/${level}`,
     }),
     getAllQuestions: builder.query({
-      query: () => ``,
+      query: () => `questions`,
     }),
   }),
 });
