@@ -1,7 +1,7 @@
 import { useSelector, useDispatch } from "react-redux";
 import Container from "@mui/material/Container";
 
-import { useGetAllQuestionsQuery } from "../../../app/services/questions";
+import { useGetAllQuestionsQuery } from "../../../app/services/ecats";
 import { selectCurrentQuestion, handleAnswerButtonClick } from "../testSlice";
 
 import Question from "../components/Question";

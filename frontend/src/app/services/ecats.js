@@ -1,7 +1,7 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
-export const questionsApi = createApi({
-  reducerPath: "questionsApi",
+export const ecatsApi = createApi({
+  reducerPath: "ecatsApi",
   baseQuery: fetchBaseQuery({ baseUrl: "http://localhost:8000/ecats/" }),
   endpoints: (builder) => ({
     getRandomQuestionByLevel: builder.query({
@@ -14,4 +14,4 @@ export const questionsApi = createApi({
 });
 
 export const { useGetRandomQuestionByLevelQuery, useGetAllQuestionsQuery } =
-  questionsApi;
+  ecatsApi;

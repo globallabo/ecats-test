@@ -1,16 +1,16 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { setupListeners } from "@reduxjs/toolkit/query";
 
-import { questionsApi } from "./services/questions";
+import { ecatsApi } from "./services/ecats";
 import testReducer from "../features/test/testSlice";
 
 export const store = configureStore({
   reducer: {
     test: testReducer,
-    [questionsApi.reducerPath]: questionsApi.reducer,
+    [ecatsApi.reducerPath]: ecatsApi.reducer,
   },
   middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware().concat(questionsApi.middleware),
+    getDefaultMiddleware().concat(ecatsApi.middleware),
 });
 
 setupListeners(store.dispatch);
