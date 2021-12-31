@@ -6,7 +6,6 @@ Project Description
 
 ### Todo
 
-- [ ] Create test-taker auth (email and code)  
 - [ ] Send results to server API  
 - [ ] Use permission classes to restrict access to put/post/etc.  
 - [ ] Write results to report output  
@@ -16,10 +15,11 @@ Project Description
 ### In Progress
 
 - [ ] Send email and code to server and validate  
-- [ ] Use React Router for various pages  
 
 ### Done ✓
 
+- [x] Create test-taker auth (email and code)  
+- [x] Use React Router for various pages  
 - [x] Create test taker code as a default value  
 - [x] Use viewsets to access API  
 - [x] Get test-taker by email, not ID  
