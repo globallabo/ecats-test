@@ -17,6 +17,10 @@ export const ecatsApi = createApi({
       query: () => `test_takers/`,
       providesTags: ["TestTaker"],
     }),
+    getTestTakerByEmail: builder.query({
+      query: (email) => `test_takers/${email}/`,
+      providesTags: ["TestTaker"],
+    }),
     createTestTaker: builder.mutation({
       query: (body) => ({
         url: "test_takers/",
@@ -32,5 +36,6 @@ export const {
   useGetRandomQuestionByLevelQuery,
   useGetAllQuestionsQuery,
   useGetAllTestTakersQuery,
+  useGetTestTakerByEmailQuery,
   useCreateTestTakerMutation,
 } = ecatsApi;
