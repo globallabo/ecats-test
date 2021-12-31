@@ -8,14 +8,10 @@ from ecats_api.serializers import (
 
 
 class TestTakerViewSet(viewsets.ModelViewSet):
+    queryset = TestTaker.objects.all()
     serializer_class = TestTakerSerializer
-
-    def get_queryset(self):
-        queryset = TestTaker.objects.all()
-        email = self.request.query_params.get("email")
-        if email is not None:
-            queryset = queryset.filter(email=email)
-        return queryset
+    lookup_field = "email"
+    lookup_value_regex = "[^/]+"
 
 
 class QuestionViewSet(viewsets.ModelViewSet):
