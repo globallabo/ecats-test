@@ -17,7 +17,7 @@ export default function TestPage() {
   const currentQuestion = useSelector(selectCurrentQuestion);
   const question = questions[currentQuestion];
   const timerDuration = 30;
-  const timeoutAnswer = { answerText: "TIMEOUT", isCorrect: false };
+  const timeoutAnswer = { ...question, userAnswer: { answerText: "TIMEOUT" } };
 
   // Check for errors or loading (might be a better way)
   if (isError) return <div>Error!</div>;
