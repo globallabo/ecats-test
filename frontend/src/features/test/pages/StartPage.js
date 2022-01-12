@@ -113,7 +113,7 @@ export default function StartPage() {
           <br />
           Type 3: 文を完成するのに適切ではない答えを選びなさい。
           <br />
-          Type 4: (　) 内の語句の正しい位置を選びなさい。
+          Type 4: (&nbsp;&nbsp;&nbsp;) 内の語句の正しい位置を選びなさい。
         </Typography>
 
         <Typography variant="body1">
@@ -123,9 +123,8 @@ export default function StartPage() {
           <br />
           各問題の制限時間は30秒ですので、30秒以内に正しい答えにクリックしてください。
           <br />
-          ※　次の問題に進むと、前の問題には戻れません。
-          <br />
-          ※　テストを開始すると、一旦停止またはテストの再開はできません。
+          ※ 次の問題に進むと、前の問題には戻れません。
+          <br />※ テストを開始すると、一旦停止またはテストの再開はできません。
         </Typography>
 
         <Typography variant="body1">
