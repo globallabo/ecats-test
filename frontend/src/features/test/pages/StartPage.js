@@ -3,11 +3,72 @@ import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
+import TextField from "@mui/material/TextField";
+import { useFormik } from "formik";
+import * as yup from "yup";
 
 import { startTest } from "../testSlice";
+import { useGetTestTakerByEmailQuery } from "../../../app/services/ecats";
+
+const validateTestTaker = (data, email, code) => {
+  if (!data) console.log("No Test Taker found.");
+  if (!data.email) console.log("No email found.");
+  if (!data.code) console.log("No code found.");
+
+  function isValidUser(userInfo) {
+    return userInfo.email === email;
+  }
+  function isValidCode(userInfo) {
+    return userInfo.code === code;
+  }
+  function isActiveUser(userInfo) {
+    return userInfo.active;
+  }
+  console.log(data);
+  if (!isValidUser(data)) {
+    console.log("Invalid email.");
+  } else if (!isValidCode(data)) {
+    console.log("Invalid code.");
+  } else if (!isActiveUser(data)) {
+    console.log("User is not active.");
+  } else {
+    console.log("User is all good.");
+    return true;
+  }
+};
+
+const validationSchema = yup.object({
+  email: yup
+    .string("Enter your email.")
+    .email("Enter a valid email address.")
+    .required("Email is required."),
+  code: yup
+    .string("Enter your 6-digit code.")
+    .matches(/^[0-9]{6}$/, "Code must be a 6-digit number.")
+    .required("Code is required."),
+});
 
 export default function StartPage() {
   const dispatch = useDispatch();
+
+  const formik = useFormik({
+    initialValues: {
+      email: "",
+      code: "",
+    },
+    validationSchema: validationSchema,
+    onSubmit: (values) => {
+      // setSkip(false);
+      alert(JSON.stringify(values, null, 2));
+      if (validateTestTaker(data, values.email, values.code)) {
+        dispatch(startTest());
+      }
+    },
+  });
+
+  const { data } = useGetTestTakerByEmailQuery(formik.values.email, {
+    skip: formik.values.email === "",
+  });
 
   return (
     <Container>
@@ -57,6 +118,35 @@ export default function StartPage() {
           <br />
           「開始する」にクリックしますと、直ちに1問目のタイマーがスタートします。
         </Typography>
+
+        <form onSubmit={formik.handleSubmit}>
+          <TextField
+            fullWidth
+            id="email"
+            name="email"
+            label="Email"
+            value={formik.values.email}
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+            error={formik.touched.email && Boolean(formik.errors.email)}
+            helperText={formik.touched.email && formik.errors.email}
+          />
+          <TextField
+            fullWidth
+            id="code"
+            name="code"
+            label="Code"
+            inputProps={{ inputMode: "numeric", pattern: "[0-9]*" }}
+            value={formik.values.code}
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+            error={formik.touched.code && Boolean(formik.errors.code)}
+            helperText={formik.touched.code && formik.errors.code}
+          />
+          <Button variant="outlined" type="Submit">
+            Submit
+          </Button>
+        </form>
 
         <Button variant="outlined" onClick={() => dispatch(startTest())}>
           開始する
