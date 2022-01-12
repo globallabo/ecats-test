@@ -15,10 +15,11 @@ Project Description
 
 ### In Progress
 
-- [ ] Send email and code to server and validate  
+- [ ] When test taker is valid and starting the test, create a test instance, and mark it as started.  
 
 ### Done ✓
 
+- [x] Send email and code to server and validate  
 - [x] Create test-taker auth (email and code)  
 - [x] Use React Router for various pages  
 - [x] Create test taker code as a default value  
