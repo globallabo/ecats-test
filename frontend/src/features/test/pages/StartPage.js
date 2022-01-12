@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { useDispatch } from "react-redux";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
@@ -7,6 +8,7 @@ import TextField from "@mui/material/TextField";
 import { useFormik } from "formik";
 import * as yup from "yup";
 
+import ErrorDialog from "../components/ErrorDialog";
 import { startTest } from "../testSlice";
 import { useGetTestTakerByEmailQuery } from "../../../app/services/ecats";
 
@@ -15,26 +17,34 @@ const validateTestTaker = (data, email, code) => {
   if (!data.email) console.log("No email found.");
   if (!data.code) console.log("No code found.");
 
-  function isValidUser(userInfo) {
-    return userInfo.email === email;
-  }
-  function isValidCode(userInfo) {
-    return userInfo.code === code;
-  }
-  function isActiveUser(userInfo) {
-    return userInfo.active;
-  }
-  console.log(data);
-  if (!isValidUser(data)) {
-    console.log("Invalid email.");
-  } else if (!isValidCode(data)) {
-    console.log("Invalid code.");
-  } else if (!isActiveUser(data)) {
-    console.log("User is not active.");
-  } else {
-    console.log("User is all good.");
-    return true;
-  }
+  // function isValidUser(userInfo) {
+  //   return userInfo.email === email;
+  // }
+  // function isValidCode(userInfo) {
+  //   return userInfo.code === code;
+  // }
+  // function isActiveUser(userInfo) {
+  //   return userInfo.active;
+  // }
+  // console.log(data);
+  // if (!isValidUser(data)) {
+  //   console.log("Invalid email.");
+  //   return "The email address entered does not exist in our system.";
+  // } else if (!isValidCode(data)) {
+  //   console.log("Invalid code.");
+  //   return "The code entered is not correct.";
+  // } else if (!isActiveUser(data)) {
+  //   console.log("User is not active.");
+  //   return "The email address entered is no longer active.";
+  // } else {
+  //   console.log("User is all good.");
+  //   return "No error.";
+  // }
+  if (data.email !== email)
+    throw "The email address entered does not exist in our system.";
+  else if (data.code !== code) throw "The code entered is not correct.";
+  else if (!data.active) throw "The email address entered is no longer active.";
+  else return true;
 };
 
 const validationSchema = yup.object({
@@ -50,6 +60,8 @@ const validationSchema = yup.object({
 
 export default function StartPage() {
   const dispatch = useDispatch();
+  const [isErrorDialogOpen, setErrorDialogOpen] = useState(false);
+  const [errorDialogText, seterrorDialogText] = useState("");
 
   const formik = useFormik({
     initialValues: {
@@ -58,10 +70,13 @@ export default function StartPage() {
     },
     validationSchema: validationSchema,
     onSubmit: (values) => {
-      // setSkip(false);
-      alert(JSON.stringify(values, null, 2));
-      if (validateTestTaker(data, values.email, values.code)) {
+      // alert(JSON.stringify(values, null, 2));
+      try {
+        validateTestTaker(data, values.email, values.code);
         dispatch(startTest());
+      } catch (error) {
+        setErrorDialogOpen(true);
+        seterrorDialogText(error);
       }
     },
   });
@@ -152,6 +167,11 @@ export default function StartPage() {
           開始する
         </Button>
       </Box>
+      <ErrorDialog
+        open={isErrorDialogOpen}
+        onClose={() => setErrorDialogOpen(false)}
+        errorText={errorDialogText}
+      />
     </Container>
   );
 }
