@@ -3,7 +3,7 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 export const ecatsApi = createApi({
   reducerPath: "ecatsApi",
   baseQuery: fetchBaseQuery({ baseUrl: "http://localhost:8000/ecats/" }),
-  tagTypes: ["Question", "TestTaker"],
+  tagTypes: ["Question", "TestTaker", "TestInstance"],
   endpoints: (builder) => ({
     getRandomQuestionByLevel: builder.query({
       query: (level) => `r/${level}`,
@@ -29,6 +29,14 @@ export const ecatsApi = createApi({
       }),
       invalidatesTags: ["TestTaker"],
     }),
+    createTestInstance: builder.mutation({
+      query: (body) => ({
+        url: "test_instances/",
+        method: "POST",
+        body,
+      }),
+      invalidatesTags: ["TestInstance"],
+    }),
   }),
 });
 
@@ -38,4 +46,5 @@ export const {
   useGetAllTestTakersQuery,
   useGetTestTakerByEmailQuery,
   useCreateTestTakerMutation,
+  useCreateTestInstanceMutation,
 } = ecatsApi;

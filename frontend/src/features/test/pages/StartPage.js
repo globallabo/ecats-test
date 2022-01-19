@@ -10,7 +10,10 @@ import * as yup from "yup";
 
 import ErrorDialog from "../components/ErrorDialog";
 import { startTest } from "../testSlice";
-import { useGetTestTakerByEmailQuery } from "../../../app/services/ecats";
+import {
+  useGetTestTakerByEmailQuery,
+  useCreateTestInstanceMutation,
+} from "../../../app/services/ecats";
 
 const validateTestTaker = (data, email, code) => {
   if (!data) console.log("No Test Taker found.");
@@ -63,6 +66,8 @@ export default function StartPage() {
   const [isErrorDialogOpen, setErrorDialogOpen] = useState(false);
   const [errorDialogText, seterrorDialogText] = useState("");
 
+  const [createTestInstance] = useCreateTestInstanceMutation();
+
   const formik = useFormik({
     initialValues: {
       email: "",
@@ -73,6 +78,12 @@ export default function StartPage() {
       // alert(JSON.stringify(values, null, 2));
       try {
         validateTestTaker(data, values.email, values.code);
+        let datetimeTaken = new Date().toISOString();
+        createTestInstance({
+          testTaker: data.id,
+          datetimeTaken: datetimeTaken,
+          isStarted: true,
+        });
         dispatch(startTest());
       } catch (error) {
         setErrorDialogOpen(true);
