@@ -74,17 +74,20 @@ export default function StartPage() {
       code: "",
     },
     validationSchema: validationSchema,
-    onSubmit: (values) => {
+    onSubmit: async (values) => {
       // alert(JSON.stringify(values, null, 2));
       try {
         validateTestTaker(data, values.email, values.code);
         let datetimeTaken = new Date().toISOString();
-        createTestInstance({
+        const testInstance = await createTestInstance({
           testTaker: data.id,
           datetimeTaken: datetimeTaken,
           isStarted: true,
-        });
-        dispatch(startTest({ testTaker: data.id }));
+        }).unwrap();
+        console.log(testInstance.id);
+        dispatch(
+          startTest({ testTaker: data.id, testInstance: testInstance.id })
+        );
       } catch (error) {
         setErrorDialogOpen(true);
         seterrorDialogText(error);
