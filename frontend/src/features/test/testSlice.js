@@ -1,6 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
+  testTaker: 0,
   isStarted: false,
   currentQuestion: 0,
   // For now, the total questions is hard-coded, because I can't quite work out how to get it cleanly from the API to here
@@ -14,7 +15,8 @@ export const testSlice = createSlice({
   name: "test",
   initialState,
   reducers: {
-    startTest: (state) => {
+    startTest: (state, action) => {
+      state.testTaker = action.payload.testTaker;
       state.isStarted = true;
     },
     handleAnswerButtonClick: (state, action) => {

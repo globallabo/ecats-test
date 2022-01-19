@@ -84,7 +84,7 @@ export default function StartPage() {
           datetimeTaken: datetimeTaken,
           isStarted: true,
         });
-        dispatch(startTest());
+        dispatch(startTest({ testTaker: data.id }));
       } catch (error) {
         setErrorDialogOpen(true);
         seterrorDialogText(error);
