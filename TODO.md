@@ -7,7 +7,6 @@ Project Description
 ### Todo
 
 - [ ] Separate StartPage into a login page and an instructions page. (After login, check email&code with backend. Give an error then if they aren't valid, or send on to instructions page.)  
-- [ ] Send results to server API  
 - [ ] Use permission classes to restrict access to put/post/etc.  
 - [ ] Write results to report output  
 - [ ] Add docker container for DRF app  
@@ -15,10 +14,11 @@ Project Description
 
 ### In Progress
 
-- [ ] When test taker is valid and starting the test, create a test instance, and mark it as started.  
+- [ ] When test is finished, mark test instance finished, user inactive and send results to server via API (probably have to keep user id and test instance id in redux state)  
 
 ### Done ✓
 
+- [x] When test taker is valid and starting the test, create a test instance, and mark it as started.  
 - [x] Send email and code to server and validate  
 - [x] Create test-taker auth (email and code)  
 - [x] Use React Router for various pages  
