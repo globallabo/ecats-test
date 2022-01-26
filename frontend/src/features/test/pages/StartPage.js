@@ -78,11 +78,10 @@ export default function StartPage() {
       // alert(JSON.stringify(values, null, 2));
       try {
         validateTestTaker(data, values.email, values.code);
-        let datetimeTaken = new Date().toISOString();
+        let startedAt = new Date().toISOString();
         const testInstance = await createTestInstance({
           testTaker: data.id,
-          datetimeTaken: datetimeTaken,
-          isStarted: true,
+          startedAt: startedAt,
         }).unwrap();
         console.log(testInstance.id);
         dispatch(
