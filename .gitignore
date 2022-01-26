@@ -257,3 +257,7 @@ dist
 
 # VS Code
 .vscode
+
+# temporary database data which may have sensitive information
+tempdata.json
+tempdata.old.json
