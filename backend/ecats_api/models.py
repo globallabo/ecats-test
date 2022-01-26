@@ -113,9 +113,8 @@ class TestInstance(TimeStampedModel):
     test_taker = models.ForeignKey(
         TestTaker, on_delete=models.RESTRICT, related_name="test_instances"
     )
-    is_started = models.BooleanField(default=False)
-    is_finished = models.BooleanField(default=False)
-    datetime_taken = models.DateTimeField()
+    started_at = models.DateTimeField(null=True, blank=True)
+    finished_at = models.DateTimeField(null=True, blank=True)
 
 
 class QuestionAnswered(TimeStampedModel):
