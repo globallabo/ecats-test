@@ -1,13 +1,28 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useSelector } from "react-redux";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
 
 import Results from "../components/Results";
+import { selectTestInstance } from "../testSlice";
+import { useUpdateTestInstanceMutation } from "../../../app/services/ecats";
 
 export default function EndPage() {
   const [showResults, setShowResults] = useState(false);
+
+  const testInstance = useSelector(selectTestInstance);
+
+  const [updateTestInstance] = useUpdateTestInstanceMutation();
+
+  useEffect(() => {
+    let finishedAt = new Date().toISOString();
+    updateTestInstance({
+      id: testInstance,
+      finishedAt: finishedAt,
+    });
+  }, []);
 
   return (
     <Container>

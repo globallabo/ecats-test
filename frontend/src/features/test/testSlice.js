@@ -51,6 +51,8 @@ export const selectCurrentQuestion = (state) => state.test.currentQuestion;
 export const selectIsStarted = (state) => state.test.isStarted;
 export const selectIsFinished = (state) => state.test.isFinished;
 export const selectUserResults = (state) => state.test.userResults;
+export const selectTestTaker = (state) => state.test.testTaker;
+export const selectTestInstance = (state) => state.test.testInstance;
 
 export const { startTest, handleAnswerButtonClick } = testSlice.actions;
 
