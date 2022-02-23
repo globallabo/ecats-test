@@ -85,7 +85,11 @@ export default function StartPage() {
         }).unwrap();
         console.log(testInstance.id);
         dispatch(
-          startTest({ testTaker: data.id, testInstance: testInstance.id })
+          startTest({
+            testTakerID: data.id,
+            testTakerEmail: data.email,
+            testInstance: testInstance.id,
+          })
         );
       } catch (error) {
         setErrorDialogOpen(true);

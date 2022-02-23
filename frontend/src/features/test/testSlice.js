@@ -1,7 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  testTaker: 0,
+  testTakerID: 0,
+  testTakerEmail: "",
   testInstance: 0,
   isStarted: false,
   currentQuestion: 0,
@@ -17,7 +18,8 @@ export const testSlice = createSlice({
   initialState,
   reducers: {
     startTest: (state, action) => {
-      state.testTaker = action.payload.testTaker;
+      state.testTakerID = action.payload.testTakerID;
+      state.testTakerEmail = action.payload.testTakerEmail;
       state.testInstance = action.payload.testInstance;
       state.isStarted = true;
     },
@@ -51,7 +53,8 @@ export const selectCurrentQuestion = (state) => state.test.currentQuestion;
 export const selectIsStarted = (state) => state.test.isStarted;
 export const selectIsFinished = (state) => state.test.isFinished;
 export const selectUserResults = (state) => state.test.userResults;
-export const selectTestTaker = (state) => state.test.testTaker;
+export const selectTestTakerID = (state) => state.test.testTakerID;
+export const selectTestTakerEmail = (state) => state.test.testTakerEmail;
 export const selectTestInstance = (state) => state.test.testInstance;
 
 export const { startTest, handleAnswerButtonClick } = testSlice.actions;

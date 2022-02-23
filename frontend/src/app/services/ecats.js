@@ -29,6 +29,14 @@ export const ecatsApi = createApi({
       }),
       invalidatesTags: ["TestTaker"],
     }),
+    updateTestTaker: builder.mutation({
+      query: ({ email, ...patch }) => ({
+        url: `test_takers/${email}/`,
+        method: "PATCH",
+        body: patch,
+      }),
+      invalidatesTags: ["TestInstance"],
+    }),
     createTestInstance: builder.mutation({
       query: (body) => ({
         url: "test_instances/",
@@ -54,6 +62,7 @@ export const {
   useGetAllTestTakersQuery,
   useGetTestTakerByEmailQuery,
   useCreateTestTakerMutation,
+  useUpdateTestTakerMutation,
   useCreateTestInstanceMutation,
   useUpdateTestInstanceMutation,
 } = ecatsApi;
