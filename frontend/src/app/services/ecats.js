@@ -73,5 +73,5 @@ export const {
   useUpdateTestTakerMutation,
   useCreateTestInstanceMutation,
   useUpdateTestInstanceMutation,
-  usecreateQuestionAnsweredMutation,
+  useCreateQuestionAnsweredMutation,
 } = ecatsApi;

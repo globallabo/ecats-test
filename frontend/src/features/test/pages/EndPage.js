@@ -6,10 +6,15 @@ import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
 
 import Results from "../components/Results";
-import { selectTestInstance, selectTestTakerEmail } from "../testSlice";
+import {
+  selectTestInstance,
+  selectTestTakerEmail,
+  selectUserResults,
+} from "../testSlice";
 import {
   useUpdateTestInstanceMutation,
   useUpdateTestTakerMutation,
+  useCreateQuestionAnsweredMutation,
 } from "../../../app/services/ecats";
 
 export default function EndPage() {
@@ -17,9 +22,13 @@ export default function EndPage() {
 
   const testInstance = useSelector(selectTestInstance);
   const testTakerEmail = useSelector(selectTestTakerEmail);
+  const results = useSelector(selectUserResults);
+  console.log(typeof results);
+  console.log(JSON.stringify(results));
 
   const [updateTestInstance] = useUpdateTestInstanceMutation();
   const [updateTestTaker] = useUpdateTestTakerMutation();
+  const [createQuestionAnswered] = useCreateQuestionAnsweredMutation();
 
   useEffect(() => {
     let finishedAt = new Date().toISOString();
@@ -32,6 +41,13 @@ export default function EndPage() {
       email: testTakerEmail,
       active: isActive,
     });
+    results.forEach((result) =>
+      createQuestionAnswered({
+        testInstance: testInstance,
+        question: result.id,
+        answerGiven: result.userAnswer.id,
+      })
+    );
   }, []);
 
   return (
