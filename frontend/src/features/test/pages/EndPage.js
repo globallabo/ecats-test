@@ -23,8 +23,6 @@ export default function EndPage() {
   const testInstance = useSelector(selectTestInstance);
   const testTakerEmail = useSelector(selectTestTakerEmail);
   const results = useSelector(selectUserResults);
-  console.log(typeof results);
-  console.log(JSON.stringify(results));
 
   const [updateTestInstance] = useUpdateTestInstanceMutation();
   const [updateTestTaker] = useUpdateTestTakerMutation();
