@@ -31,8 +31,8 @@ export const testSlice = createSlice({
         questionText: action.payload.questionText,
         correctAnswer: action.payload.answerOptions.find(
           (item) => item.isCorrect === true
-        ).answerText,
-        userAnswer: action.payload.userAnswer.answerText,
+        ),
+        userAnswer: action.payload.userAnswer,
       });
 
       if (action.payload.userAnswer.isCorrect) {

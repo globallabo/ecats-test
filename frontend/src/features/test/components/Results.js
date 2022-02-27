@@ -66,16 +66,16 @@ export default function Results() {
                 />
               </StyledTableCell>
               <StyledTableCell>{row.questionText}</StyledTableCell>
-              <StyledTableCell>{row.correctAnswer}</StyledTableCell>
+              <StyledTableCell>{row.correctAnswer.answerText}</StyledTableCell>
               <StyledTableCell
                 sx={{
                   color:
-                    row.userAnswer === row.correctAnswer
+                    row.userAnswer.id === row.correctAnswer.id
                       ? theme.palette.success.main
                       : theme.palette.error.main,
                 }}
               >
-                {row.userAnswer}
+                {row.userAnswer.answerText}
               </StyledTableCell>
             </StyledTableRow>
           ))}
