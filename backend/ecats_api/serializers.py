@@ -6,6 +6,7 @@ from ecats_api.models import (
     Answer,
     QuestionType,
     Target,
+    QuestionAnswered,
 )
 
 
@@ -70,3 +71,9 @@ class RandomQuestionSerializer(serializers.ModelSerializer):
     class Meta:
         model = Question
         fields = ["id", "target", "question_type", "question_text", "answer_options"]
+
+
+class QuestionAnsweredSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = QuestionAnswered
+        fields = "__all__"

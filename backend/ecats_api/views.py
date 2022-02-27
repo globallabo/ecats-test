@@ -1,10 +1,11 @@
 from rest_framework import viewsets
 
-from ecats_api.models import TestTaker, TestInstance, Question
+from ecats_api.models import TestTaker, TestInstance, Question, QuestionAnswered
 from ecats_api.serializers import (
     TestTakerSerializer,
     TestInstanceSerializer,
     QuestionSerializer,
+    QuestionAnsweredSerializer,
 )
 
 
@@ -33,3 +34,8 @@ class QuestionViewSet(viewsets.ModelViewSet):
             count = int(count)
             queryset = queryset[:count]
         return queryset
+
+
+class QuestionAnsweredViewSet(viewsets.ModelViewSet):
+    queryset = QuestionAnswered.objects.all()
+    serializer_class = QuestionAnsweredSerializer
