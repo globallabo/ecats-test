@@ -19,14 +19,20 @@ class TestTakerViewSet(viewsets.ModelViewSet):
 
     @action(detail=True, methods=["get"])
     def test_instances(self, request, email=None):
-        qs = self.get_object().test_instances.all()
-        serializer = TestInstanceSerializer(qs, many=True)
+        queryset = self.get_object().test_instances.all()
+        serializer = TestInstanceSerializer(queryset, many=True)
         return Response(serializer.data)
 
 
 class TestInstanceViewSet(viewsets.ModelViewSet):
     queryset = TestInstance.objects.all()
     serializer_class = TestInstanceSerializer
+
+    @action(detail=True, methods=["get"])
+    def questions_answered(self, request, pk=None):
+        queryset = self.get_object().questions_answered.all()
+        serializer = QuestionAnsweredSerializer(queryset, many=True)
+        return Response(serializer.data)
 
 
 class QuestionViewSet(viewsets.ModelViewSet):
