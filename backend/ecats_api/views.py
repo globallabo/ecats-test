@@ -1,4 +1,6 @@
 from rest_framework import viewsets
+from rest_framework.response import Response
+from rest_framework.decorators import action
 
 from ecats_api.models import TestTaker, TestInstance, Question, QuestionAnswered
 from ecats_api.serializers import (
@@ -14,6 +16,12 @@ class TestTakerViewSet(viewsets.ModelViewSet):
     serializer_class = TestTakerSerializer
     lookup_field = "email"
     lookup_value_regex = "[^/]+"
+
+    @action(detail=True, methods=["get"])
+    def test_instances(self, request, email=None):
+        qs = self.get_object().test_instances.all()
+        serializer = TestInstanceSerializer(qs, many=True)
+        return Response(serializer.data)
 
 
 class TestInstanceViewSet(viewsets.ModelViewSet):
