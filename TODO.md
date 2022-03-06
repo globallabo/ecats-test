@@ -6,6 +6,7 @@ Project Description
 
 ### Todo
 
+- [ ] Make script to scrape Google Sheet for data to enter into DB.  
 - [ ] Separate admin into pages for adding/editing test takers and test results.  
 - [ ] Separate StartPage into a login page and an instructions page. (After login, check email&code with backend. Give an error then if they aren't valid, or send on to instructions page.)  
 - [ ] Use permission classes to restrict access to put/post/etc.  
@@ -18,6 +19,7 @@ Project Description
 
 ### Done ✓
 
+- [x] Remove auth modules previously installed and reset migrations.  
 - [x] When test is finished, mark test instance finished, user inactive and send results to server via API (probably have to keep user id and test instance id in redux state)  
 - [x] When test taker is valid and starting the test, create a test instance, and mark it as started.  
 - [x] Send email and code to server and validate  
