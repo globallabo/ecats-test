@@ -51,11 +51,6 @@ INSTALLED_APPS = [
     "django.contrib.sites",
     "rest_framework",
     "corsheaders",
-    "dj_rest_auth",
-    "allauth",
-    "allauth.account",
-    "allauth.socialaccount",
-    "allauth.socialaccount.providers.google",
     "users",
     "ecats_api",
 ]
