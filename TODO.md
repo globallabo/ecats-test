@@ -11,11 +11,12 @@ Project Description
 - [ ] Separate StartPage into a login page and an instructions page. (After login, check email&code with backend. Give an error then if they aren't valid, or send on to instructions page.)  
 - [ ] Use permission classes to restrict access to put/post/etc.  
 - [ ] Write results to report output  
-- [ ] Add docker container for DRF app  
-  - [ ] Deployment? gunicorn?  
 
 ### In Progress
 
+- [ ] Add docker container for DRF app  
+  - [ ] Deployment? gunicorn?  
+- [ ] Convert to PostgreSQL  
 
 ### Done ✓
 
