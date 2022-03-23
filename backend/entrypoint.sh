@@ -11,8 +11,4 @@ then
     echo "PostgreSQL started"
 fi
 
-# Don't run on every restart
-#python manage.py flush --no-input
-#python manage.py migrate
-
 exec "$@"
