@@ -25,11 +25,13 @@ services:
   nginx:
     build: ./nginx
     volumes:
+      - react_build:/var/www/react
       - static_volume:/home/app/backend/staticfiles
     ports:
       - 1337:80
     depends_on:
       - backend
+      - frontend
 
   frontend:
     container_name: ecats-test
@@ -39,8 +41,10 @@ services:
       target: production
     env_file:
       - .env
-    restart: always
+    volumes:
+      - react_build:/app/build
 
 volumes:
   postgres_data:
+  react_build:
   static_volume:
