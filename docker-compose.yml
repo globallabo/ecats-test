@@ -38,8 +38,9 @@ services:
     image: ecats-test
     build:
       context: ./frontend
-    env_file:
-      - .env
+      # args will load the environment variable from the root .env file, since React won't before build time
+      args:
+        - REACT_APP_BACKEND_API=${REACT_APP_BACKEND_API}
     volumes:
       - react_build:/app/build
 
