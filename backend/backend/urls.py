@@ -17,6 +17,6 @@ from django.contrib import admin
 from django.urls import path, include
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path("ecats/", include("ecats_api.urls", namespace="ecats_api"))
+    path("djadmin/", admin.site.urls),
+    path("ecats/", include("ecats_api.urls", namespace="ecats_api")),
 ]
