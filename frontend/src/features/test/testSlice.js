@@ -1,56 +1,13 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const questionsList = [
-  {
-    id: 1,
-    instructionText: "正しい答えを選んで文を完成させなさい。",
-    questionText: "Henry __ a good boy.",
-    answerOptions: [
-      { answerText: "are", isCorrect: false },
-      { answerText: "be", isCorrect: false },
-      { answerText: "been", isCorrect: false },
-      { answerText: "is", isCorrect: true },
-    ],
-  },
-  {
-    id: 2,
-    instructionText: "正しい語句を選んで文を完成させなさい。",
-    questionText: "much",
-    answerOptions: [
-      { answerText: "I feel ___ better now.", isCorrect: true },
-      { answerText: "I ___ like this new computer.", isCorrect: false },
-      { answerText: "I like ___ spicy food.", isCorrect: false },
-      { answerText: "I sleep on the ___ weekends.", isCorrect: false },
-    ],
-  },
-  {
-    id: 3,
-    instructionText: "文を完成するのに<u>適切ではない</u>答えを選びなさい。",
-    questionText: "the best",
-    answerOptions: [
-      { answerText: "It was ___ movie I had ever seen.", isCorrect: false },
-      { answerText: "I had ___ time.", isCorrect: false },
-      { answerText: "That was ___ concert in a long time.", isCorrect: false },
-      { answerText: "___ really like the movie.", isCorrect: true },
-    ],
-  },
-  {
-    id: 4,
-    instructionText: "(　) 内の語句の正しい位置を選びなさい。",
-    questionText: "These ① chicken wings ② are ③ spicy to ④ eat. (too)",
-    answerOptions: [
-      { answerText: "①", isCorrect: false },
-      { answerText: "②", isCorrect: false },
-      { answerText: "③", isCorrect: true },
-      { answerText: "④", isCorrect: false },
-    ],
-  },
-];
-
 const initialState = {
-  questions: questionsList,
+  testTakerID: 0,
+  testTakerEmail: "",
+  testInstance: 0,
   isStarted: false,
   currentQuestion: 0,
+  // For now, the total questions is hard-coded, because I can't quite work out how to get it cleanly from the API to here
+  totalQuestions: 4,
   isFinished: false,
   score: 0,
   userResults: [],
@@ -60,28 +17,29 @@ export const testSlice = createSlice({
   name: "test",
   initialState,
   reducers: {
-    startTest: (state) => {
+    startTest: (state, action) => {
+      state.testTakerID = action.payload.testTakerID;
+      state.testTakerEmail = action.payload.testTakerEmail;
+      state.testInstance = action.payload.testInstance;
       state.isStarted = true;
     },
     handleAnswerButtonClick: (state, action) => {
-      console.log(action.payload);
-      console.log(action.payload.isCorrect);
-
       state.userResults.push({
-        id: state.questions[state.currentQuestion].id,
-        instructionText: state.questions[state.currentQuestion].instructionText,
-        questionText: state.questions[state.currentQuestion].questionText,
-        correctAnswer: state.questions[
-          state.currentQuestion
-        ].answerOptions.find((item) => item.isCorrect === true).answerText,
-        userAnswer: action.payload.answerText,
+        id: action.payload.id,
+        canDoStatement: action.payload.target.canDoStatementJa,
+        instructionText: action.payload.questionType.instructionTextJa,
+        questionText: action.payload.questionText,
+        correctAnswer: action.payload.answerOptions.find(
+          (item) => item.isCorrect === true
+        ),
+        userAnswer: action.payload.userAnswer,
       });
 
-      if (action.payload.isCorrect) {
+      if (action.payload.userAnswer.isCorrect) {
         state.score += 1;
       }
 
-      if (state.currentQuestion + 1 < state.questions.length) {
+      if (state.currentQuestion + 1 < state.totalQuestions) {
         state.currentQuestion += 1;
       } else {
         state.isFinished = true;
@@ -95,6 +53,9 @@ export const selectCurrentQuestion = (state) => state.test.currentQuestion;
 export const selectIsStarted = (state) => state.test.isStarted;
 export const selectIsFinished = (state) => state.test.isFinished;
 export const selectUserResults = (state) => state.test.userResults;
+export const selectTestTakerID = (state) => state.test.testTakerID;
+export const selectTestTakerEmail = (state) => state.test.testTakerEmail;
+export const selectTestInstance = (state) => state.test.testInstance;
 
 export const { startTest, handleAnswerButtonClick } = testSlice.actions;
 

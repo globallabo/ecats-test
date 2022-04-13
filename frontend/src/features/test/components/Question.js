@@ -1,10 +1,15 @@
+import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import Typography from "@mui/material/Typography";
+import Stack from "@mui/material/Stack";
+import Button from "@mui/material/Button";
 import dompurify from "dompurify";
 
 import { selectCurrentQuestion } from "../testSlice";
+import { handleAnswerButtonClick } from "../testSlice";
 
 export default function Question({ question }) {
+  const dispatch = useDispatch();
   const currentQuestion = useSelector(selectCurrentQuestion);
 
   // Modify positional question with some extra spacing
@@ -29,7 +34,7 @@ export default function Question({ question }) {
         問 {currentQuestion + 1}:&nbsp;
         <span
           dangerouslySetInnerHTML={{
-            __html: sanitizer(question.instructionText),
+            __html: sanitizer(question.questionType.instructionTextJa),
           }}
         />
       </Typography>
@@ -42,6 +47,26 @@ export default function Question({ question }) {
           }}
         />
       </Typography>
+      <Stack spacing={2}>
+        {question.answerOptions.map((answerOption) => {
+          return (
+            <Button
+              key={answerOption.id}
+              variant="outlined"
+              onClick={() =>
+                dispatch(
+                  handleAnswerButtonClick({
+                    ...question,
+                    userAnswer: answerOption,
+                  })
+                )
+              }
+            >
+              {answerOption.answerText}
+            </Button>
+          );
+        })}
+      </Stack>
     </>
   );
 }
