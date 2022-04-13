@@ -175,13 +175,9 @@ export default function StartPage() {
             helperText={formik.touched.code && formik.errors.code}
           />
           <Button variant="outlined" type="Submit">
-            Submit
+            開始する
           </Button>
         </form>
-
-        <Button variant="outlined" onClick={() => dispatch(startTest())}>
-          開始する
-        </Button>
       </Box>
       <ErrorDialog
         open={isErrorDialogOpen}
