@@ -41,6 +41,7 @@ services:
       # args will load the environment variable from the root .env file, since React won't before build time
       args:
         - REACT_APP_BACKEND_API=${REACT_APP_BACKEND_API}
+        - REACT_APP_DEMO_MODE=${REACT_APP_DEMO_MODE}
     volumes:
       - react_build:/app/build
 

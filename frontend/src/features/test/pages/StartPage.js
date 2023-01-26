@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
+import Alert from "@mui/material/Alert";
+import AlertTitle from "@mui/material/AlertTitle";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Container from "@mui/material/Container";
@@ -115,11 +117,9 @@ export default function StartPage() {
           <br />
           CFERの評価基準で英語力を明確に評価します。
         </Typography>
-
         <Typography variant="body1">
           このダイアグノスティックテストでは、主に正確性や語彙力を測定します。
         </Typography>
-
         <Typography variant="body1" mb="0">
           問題タイプは4種類あります。
         </Typography>
@@ -132,7 +132,6 @@ export default function StartPage() {
           <br />
           Type 4: (&nbsp;&nbsp;&nbsp;) 内の語句の正しい位置を選びなさい。
         </Typography>
-
         <Typography variant="body1">
           お間違えのないよう、回答する前に必ず出題されている問題の説明をお読みください。
           <br />
@@ -143,13 +142,21 @@ export default function StartPage() {
           ※ 次の問題に進むと、前の問題には戻れません。
           <br />※ テストを開始すると、一旦停止またはテストの再開はできません。
         </Typography>
-
         <Typography variant="body1">
           準備ができましたら、「開始する」にクリックしてください。
           <br />
           「開始する」にクリックしますと、直ちに1問目のタイマーがスタートします。
         </Typography>
-
+        {process.env.REACT_APP_DEMO_MODE === "true" && (
+          <Alert severity="info">
+            <AlertTitle>For Demo Use:</AlertTitle>
+            <Typography variant="body1">
+              Email: demo@example.com
+              <br />
+              Code: 123456
+            </Typography>
+          </Alert>
+        )}
         <form onSubmit={formik.handleSubmit}>
           <TextField
             fullWidth

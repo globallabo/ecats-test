@@ -34,7 +34,10 @@ export default function EndPage() {
       id: testInstance,
       finishedAt: finishedAt,
     });
-    let isActive = false;
+
+    // Allow the demo user to remain active even after finishing the test
+    let isActive = testTakerEmail === "demo@whatever.com";
+
     updateTestTaker({
       email: testTakerEmail,
       active: isActive,
