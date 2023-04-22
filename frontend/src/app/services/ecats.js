@@ -1,9 +1,14 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
+import cookie from "react-cookies";
 
 export const ecatsApi = createApi({
   reducerPath: "ecatsApi",
   baseQuery: fetchBaseQuery({
     baseUrl: `${process.env.REACT_APP_BACKEND_API}/ecats/`,
+    prepareHeaders: (headers) => {
+      headers.set("X-CSRFToken", cookie.load("csrftoken"));
+      return headers;
+    },
   }),
   tagTypes: ["Question", "TestTaker", "TestInstance", "QuestionAnswered"],
   endpoints: (builder) => ({

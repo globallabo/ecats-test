@@ -6,6 +6,7 @@ Project Description
 
 ### Todo
 
+- [ ] Allow demo login details to be used without inactivating.  
 - [ ] Use permission classes to restrict access to put/post/etc.  
 - [ ] Separate StartPage into a login page and an instructions page. (After login, check email&code with backend. Give an error then if they aren't valid, or send on to instructions page.)  
 - [ ] Separate admin into pages for adding/editing test takers and test results.  
@@ -17,6 +18,7 @@ Project Description
 
 ### Done ✓
 
+- [x] Use CSRF token from cookies when sending requests from frontend to backend.  
 - [x] Add docker container for DRF app  
 - [x] Convert to PostgreSQL  
   - [x] Deployment? gunicorn?  

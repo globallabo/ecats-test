@@ -152,6 +152,7 @@ STATIC_ROOT = BASE_DIR / "staticfiles"
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 CORS_ALLOWED_ORIGINS = config("DJANGO_CORS_ALLOWED_ORIGINS", cast=Csv())
+CSRF_TRUSTED_ORIGINS = config("DJANGO_CORS_ALLOWED_ORIGINS", cast=Csv())
 
 # Allow for conversion from DRF's snake_case to JSON camelCase
 REST_FRAMEWORK = {
